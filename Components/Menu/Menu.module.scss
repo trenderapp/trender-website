@@ -1,0 +1,27 @@
+.fixed-menu {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 5px 5px var(--bg-primary);
+        border-radius: 8px;
+        background-color: var(--bg-secondary);
+        padding: 15px;
+        
+        .align_center {
+            align-items: center;
+        }
+    }
+}

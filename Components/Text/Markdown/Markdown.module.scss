@@ -1,0 +1,24 @@
+.markdown {
+
+    a {
+
+        color: var(--text-link);
+        text-decoration: underline;
+    }
+
+    :global(.emoji) {
+        height: 1.25em;
+        width: 1.25em;
+        margin: 0 0.05em 0 0.1em;
+        vertical-align: -0.2em;
+    }
+
+    &[data-large-emojis="true"] :global(.emoji) {
+        width: 3rem;
+        height: 3rem;
+        margin-bottom: 0;
+        margin-top: 1px;
+        margin-right: 2px;
+        vertical-align: -0.3em;
+    }
+}

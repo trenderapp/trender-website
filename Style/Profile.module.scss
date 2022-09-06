@@ -1,0 +1,104 @@
+@use "./variables.scss";
+
+.profile_section {
+  @media screen and (max-width: 800px) {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  border-right: 2px solid var(--bg-secondary);
+  border-left: 2px solid var(--bg-secondary);
+
+  .profile_informations {
+    padding: 20px;
+
+    @media screen and (max-width: 800px) {
+      padding: 5px;
+    }
+
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-top: -60px;
+      
+      button {
+        svg {
+          width: 22px;
+          height: 22px;
+        }
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 10px;
+        background: var(--bg-secondary);
+        border: none;
+        color: var(--text-normal);
+        text-transform: uppercase;
+        border-radius: 5px;
+
+        &:hover {
+          transition: var(--transition);
+          background-color: var(--text-normal-hover);
+          color: var(--bg-secondary);
+        }
+      }
+    }
+
+    .middle {
+      padding-left: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      overflow: hidden;
+      
+      .username {
+        max-width: 75%;
+        font-weight: 700;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .nickname {
+        color: var(--text-muted);
+        font-size: 14px;
+      }
+    }
+
+    .description {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      
+      span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      .date {
+        text-transform: capitalize;
+      }
+    }
+
+    .bottom {
+      padding-top: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      .number {
+        font-weight: 700;
+      }
+    }
+  }
+}

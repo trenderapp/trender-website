@@ -1,0 +1,40 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.collumn {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.no_wrap {
+    flex-wrap: nowrap;
+}
+
+.space_evenly {
+    justify-content: space-evenly;
+}
+
+.space_between {
+    justify-content: space-between;
+}
+
+.uppercase {
+    font-weight: 600;
+    text-transform: uppercase;
+}

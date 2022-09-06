@@ -1,0 +1,57 @@
+@use "./variables.scss";
+
+._error {
+  color: var(--color-red);
+  text-align: center;
+}
+
+.success {
+  color: var(--color-green);
+  text-align: center;
+}
+
+._warning {
+  color: var(--warning-color);
+  text-align: center;
+}
+
+.online {
+  color: var(--good-color);
+}
+
+.dnd {
+  color: var(--warning-color);
+}
+
+.sleep {
+  color: var(--medium-color);
+}
+
+.offline {
+  color: var(--off-color);
+}
+
+.green {
+    color: var(--color-green);
+}
+  
+.yellow {
+    color: var(--color-yellow);
+}
+  
+.red {
+    color: var(--color-red);
+}
+
+.svg-link, .a {
+
+    transition: var(--transition);
+    cursor: pointer;
+    color: var(--text-normal);
+    text-decoration: none;
+  
+    &:hover {
+      transition: var(--transition);
+      filter: grayscale(50%) opacity(0.7);
+    }
+}

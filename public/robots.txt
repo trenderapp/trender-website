@@ -1,0 +1,9 @@
+User-Agent: *
+Allow: /
+
+
+Disallow: /messages/*
+Disallow: /settings/*
+
+Host: https://trenderapp.com
+Sitemap: https://trenderapp.com/sitemap.xml

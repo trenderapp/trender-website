@@ -1,0 +1,14 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.trenderapp.social",
+        "sha256_cert_fingerprints": [
+          "21:AE:4E:89:61:C1:C6:64:1D:51:41:EC:E9:8D:E9:D0:CB:78:7F:2B:13:70:58:48:39:2C:20:13:CA:EF:E1:E2"
+        ]
+      }
+    }
+  ]

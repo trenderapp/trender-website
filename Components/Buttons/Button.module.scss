@@ -1,0 +1,20 @@
+.simple {
+    transition: var(--transition);
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: var(--text-normal);
+    background-color: var(--bg-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    
+    &.disabled {
+        cursor: default;
+        background-color: var(--hover-overlay);
+    }
+
+    &:hover {
+        transition: var(--transition);
+        background-color: var(--hover-overlay);
+    }
+}

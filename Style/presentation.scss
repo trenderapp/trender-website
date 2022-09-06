@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+div.presentation {
+    --website-black-bg: #121212;
+    --website-black-text: #dcddde;
+    
+    --website-white-bg: #e0dfdf;
+    --website-white-text: #848585;
+    --website-white-text-highlight: #181818;
+    
+    --website-blue-bg: #141418;
+    --website-blue-text: #a7a8a8;
+    --website-blue-text-highlight: #dcddde;
+
+    
+    overflow: auto;
+    height: 100vh;
+
+    header {
+      height: 80px;
+      display: flex;
+      flex-direction: row;
+      position: unset;
+      max-width: calc(var(--nav-width) + 250px * 2);
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      background-color: var(--bg-primary);
+      align-items: center;
+
+      .connect {
+        transform: var(--transition);
+        min-width: 125px;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 50px;
+        text-align: center;
+        background-color: var(--bg-secondary);
+        
+        &:hover {
+          transform: var(--transition);
+          background-color: var(--bg-third);
+
+          a {  
+            color: var(--text-normal-hover);
+          }
+        }
+      }
+    }
+
+    footer {
+      padding: 15px;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-evenly;
+      height: 33vh;
+      border-top: 1px solid var(--bg-secondary);
+
+      @media screen and (max-width: 800px) {
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      div {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          cursor: pointer;
+          transition: var(--transition);
+          color: var(--text-normal);
+
+          &:hover {
+            transition: var(--transition);
+            color: var(--text-normal-hover);
+          }
+        }
+
+        a {
+
+          &:hover {
+            transition: var(--transition);
+            color: var(--text-normal-hover);
+          }
+        }
+        h3 {
+          color: var(--website-white-text);
+        }
+      }
+    }
+}

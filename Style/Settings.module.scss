@@ -1,0 +1,12 @@
+.account_blocked {
+    border-radius: var(--border-radius);
+    padding: 10px;
+    background-color: var(--bg-secondary);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+
+}

@@ -1,0 +1,9 @@
+.underline {
+    text-decoration: underline;
+}
+
+.no_hover {
+    &:hover {
+        filter: none;
+    }
+}

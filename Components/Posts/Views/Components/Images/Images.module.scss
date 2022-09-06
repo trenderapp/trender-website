@@ -1,0 +1,111 @@
+
+.container {
+    position: initial;
+    width: 100%;
+    height: 500px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+}
+
+.image_layout {
+    position: initial;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+   
+    button {
+        cursor: pointer;
+    }
+}
+
+.icon {
+    cursor: pointer;
+    transition: all 0.2s linear 0.2s;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: visible;
+    position: relative;
+
+    svg {
+        transition: all 0.2s linear 0s;
+    }
+
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+
+        svg {
+            transform: scale(1.25);
+            transition: all 0.2s linear 0.2s;
+        }
+    }
+
+    &.rotate {
+        transform: rotate(180deg)
+    }
+}
+
+.close {
+    transition: all 0.2s linear 0.2s;
+    cursor: pointer;
+    display: flex;
+
+    &:hover {
+        transition: all 0.2s linear 0s;
+
+        svg {
+            transition: all 0.2s linear 0.2s;
+            transform: scale(1.15);    
+            transform: rotate(90deg)
+        }
+    }
+}
+
+.image_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.dots {
+    width: 100%;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    .dot {
+        transition: var(--transition);
+        cursor: pointer;
+        background-color: var(--text-normal);
+        border-radius: 5px;
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        
+        &:hover {
+            transition: var(--transition);
+            background-color: var(--fa-primary);
+        }
+
+        &.active {
+            transition: var(--transition);
+            background-color: var(--fa-secondary);
+        }
+    }
+}

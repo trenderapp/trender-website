@@ -1,0 +1,21 @@
+.create_post {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+
+  .bottom {
+    margin-bottom: 5px;
+  }
+}
+
+.create_post_audio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+
+  audio {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}

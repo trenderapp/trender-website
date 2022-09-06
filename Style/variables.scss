@@ -1,0 +1,86 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+.theme-dark-blue {
+  --bg-primary: #23232e;
+  --bg-primary-opacity: #242433;
+  --bg-secondary: #141418;
+  --bg-third: #1E202C;
+  --text-normal: #dddddd;
+  --text-normal-hover: #a8a8a8;
+  --text-link: #00b0f4;
+  --text-muted: #a6a9ad;
+  --badge-color: #f04747;
+  --fa-primary: #ff7eee;
+  --fa-secondary: #df49a6;
+  --fa-third: #b33b85;
+  --warning-color: #ea4646;
+  --good-color: #43b581;
+  --medium-color: #faa61a;
+  --off-color: #6e7985;
+  --color-blue: #1c9eff;
+  --color-blue-hover: #007ad6;
+  --color-red: #cc3300;
+  --color-green: #339900;
+  --color-yellow: #ffcc00;
+  --hover-overlay: rgba(255, 255, 255, 0.1);
+
+  color: var(--text-normal);
+  background-color: var(--bg-primary);
+}
+
+.theme-dark {
+  --bg-primary: #1e1e1e;
+  --bg-primary-opacity: #282828;
+  --bg-secondary: #121212;
+  --bg-third: #282828;
+  --text-normal: #dddddd;
+  --text-normal-hover: #ffffff;
+  --text-link: #00b0f4;
+  --text-muted: #a6a9ad;
+  --badge-color: #f04747;
+  --fa-primary: #bc6ff1;
+  --fa-secondary: #892cdc;
+  --fa-third: #52057b;
+  --warning-color: #ee2c2c;
+  --good-color: #43b581;
+  --medium-color: #faa61a;
+  --off-color: #6e7985;
+  --color-blue: #1c9eff;
+  --color-blue-hover: #007ad6;
+  --color-red: #cc3300;
+  --color-green: #339900;
+  --color-yellow: #ffcc00;
+  --hover-overlay: rgba(255, 255, 255, 0.1);
+
+  color: var(--text-normal);
+  background-color: var(--bg-primary);
+}
+
+.theme-white {
+  --bg-primary: #fafafa;
+  --bg-primary-opacity: #D9D9D9;
+  --bg-secondary: #e0dfdf;
+  --bg-third: #D9D9D9;
+  --text-normal: #181818;
+  --text-normal-hover: #858585;
+  --text-link: #00b0f4;
+  --text-muted: #a6a9ad;
+  --badge-color: #f04747;
+  --fa-primary: #34b9ee;
+  --fa-secondary: #2ca1cf;
+  --fa-third: #268cb4;
+  --warning-color: #ea4646;
+  --good-color: #43b581;
+  --medium-color: #faa61a;
+  --off-color: #6e7985;
+  --color-blue: #1c9eff;
+  --color-blue-hover: #007ad6;
+  --color-red: #cc3300;
+  --color-green: #339900;
+  --color-yellow: #ffcc00;
+  --hover-overlay: rgba(255, 255, 255, 0.1);
+
+  color: var(--text-normal);
+  background-color: var(--bg-primary);
+}
