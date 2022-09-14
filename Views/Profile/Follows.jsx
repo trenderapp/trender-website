@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 
 import styles from "../../Style/All.module.scss";
 import MemberList from "../../Components/Members/List";
-import client from "../../Services/client";
 import PageContainer from "../../Components/Home/PageContainer";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function DisplayFollows({ nickname, type }) {
 
@@ -12,6 +12,7 @@ function DisplayFollows({ nickname, type }) {
     const [info, setInfo] = useState([]);
     const [error, setError] = useState(false);
     const [loader, setLoader] = useState(true);
+    const { client } = useClient();
 
     useEffect(() => {
         async function getData() {

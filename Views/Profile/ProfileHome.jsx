@@ -5,11 +5,11 @@ import PostList from "../../Components/Posts/PostList";
 import DisplayAccountInformations from "../../Components/Profile/DisplayAccountInformations";
 import ErrorUser from "../../Components/Profile/ErrorUser";
 import { PostsListContext } from "../../Context/PostsContext";
-import client from "../../Services/client";
 import { addPosts } from "../../Context/Reducer/Posts";
 import styles from "../../Style/All.module.scss";
 import DisplayPosts from "../../Components/Posts/DisplayPosts";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function ProfileHome({ nickname, description, image }) {
 
@@ -19,7 +19,8 @@ function ProfileHome({ nickname, description, image }) {
     const [informations, setInfo] = useState(null);
     const [loader, setLoader] = useState(true);
     const [loading, setLoading] = useState(true);
-    const [pined, setPined] = useState(null)
+    const [pined, setPined] = useState(null);
+    const { client } = useClient();
     
     useEffect(() => {
         async function getData() {

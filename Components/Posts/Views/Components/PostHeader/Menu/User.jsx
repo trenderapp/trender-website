@@ -3,15 +3,15 @@ import FixedMenu from "../../../../../Others/FixedMenu";
 import Svg from "../../../../../Svg/Svg";
 import styles from "../../../../../../Style/All.module.scss";
 import { SinglePostContext } from "../../../../PostContext";
-import client from "../../../../../../Services/client";
 import { AlertContext } from "../../../../../../Context/AlertContext";
 import { useTranslation } from "../../../../../../Context/Localization";
+import { useClient } from "../../../../../../Context";
 
 
 function User({ setShowModal }) {
     
     const { t } = useTranslation();
-    
+    const { client } = useClient();
     const { info } = useContext(SinglePostContext);
     const { setAlert } = useContext(AlertContext);
 

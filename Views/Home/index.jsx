@@ -1,15 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import client, { user_token } from "../../Services/client";
 import CreatePost from "../../Components/Posts/Creation/CreatePost";
 import NotConnected from "../../Components/Posts/NotConnected";
 import PageContainer from "../../Components/Home/PageContainer";
 import { PostsListContext } from "../../Context/PostsContext";
 import PostList from "../../Components/Posts/PostList";
 import Loader from "../../Components/Others/Loader";
-import styles from "../../Style/All.module.scss";
 import { addPosts } from "../../Context/Reducer/Posts";
 import { useTranslation } from "../../Context/Localization";
 import { NoPostError } from "../../Errors";
+import { useClient } from "../../Context";
 
 function HomeIndex() {
 
@@ -18,6 +17,7 @@ function HomeIndex() {
     const [error, setError] = useState(false);
     const [loader, setLoader] = useState(true);
     const [loading, setLoading] = useState(true);
+    const { client, token } = useClient();
 
     useEffect(() => {
         async function getData() {
@@ -42,10 +42,10 @@ function HomeIndex() {
 
     return (
         <PageContainer onBottom={bottomHandler} description="Display all post for your account" title="Home">
-            { user_token && <CreatePost /> }
+            { token && <CreatePost /> }
             <section>
                 {
-                    user_token ? loading ? <Loader /> : !error ? posts.length > 0 ? <PostList list={posts} loader={loader} /> : <NoPostError /> : <span>{t(`${error}`)}</span> : <NotConnected />
+                    token ? loading ? <Loader /> : !error ? posts.length > 0 ? <PostList list={posts} loader={loader} /> : <NoPostError /> : <span>{t(`${error}`)}</span> : <NotConnected />
                 }
             </section>
         </PageContainer>

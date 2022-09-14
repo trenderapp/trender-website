@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 
 import Svg from "../../../../../Components/Svg/Svg";
-import ImageView from "../ImageView";
 import ImageStyles from "./Images.module.scss";
 import Image from "next/image";
 import { SimpleColor } from "../../../../../Services/Canvas";
-import client from "../../../../../Services/client";
+import { useClient } from "../../../../../Context";
 
 const ImagePlayer = ({ pictures, deleteOnClick, attachments, post_id, user_id }) => {
 
     const [displayImg, setDisplay] = useState(false)
-
+    const { client } = useClient()
     const [img, setImg] = useState({
         src: pictures[0],
         position: 0

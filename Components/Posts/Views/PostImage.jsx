@@ -10,12 +10,10 @@ function PostImage() {
 
     const { info } = useContext(SinglePostContext)
 
-    console.log(info);
-
     return (
         <>
             <PostHeader info={info} />
-            <Text text={info.description} />
+            <Text info={info} text={info.content} />
             <ImageCarroussel user_id={info.from.user_id} post_id={info.post_id} pictures={info.attachments} />
             { /*<ImagePlayer user_id={info.from.user_id} post_id={info.post_id} pictures={info.attachments} />*/ }
             <PostBottom info={info} />

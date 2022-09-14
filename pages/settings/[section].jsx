@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
+import React from "react";
+import { useClient } from "../../Context";
 
-import { UserContext } from "../../Context/AppContext";
 import SettingsSections from "../../Views/Settings";
 
 
 function Settings({ section }) {
 
-    const { user } = useContext(UserContext);
+    const { user } = useClient();
     
     return (
         <SettingsSections user={user} section={section} />

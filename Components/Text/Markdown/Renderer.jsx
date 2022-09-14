@@ -25,10 +25,10 @@ const RE_HASHTAG = /#[A-z0-9]{1,30}/g;
 const RE_BR = /\n/g;
 
 // export const RE_MENTIONS = /<@([A-z0-9]{26})>/g;
-export const RE_MENTIONS = /@[A-z0-9]{1,30}/g;
+export const RE_MENTIONS = /<@[A-z0-9]{1,30}>/g;
 export const RE_LINKS = /(https?:\/\/[^\s]+)/g;
 
-export default function Renderer({ content }) {
+export default function Renderer({ content, info }) {
 
     if (typeof content === "undefined") return null;
     if (content.length === 0) return null;
@@ -37,7 +37,14 @@ export default function Renderer({ content }) {
     // We don't care if the mention changes.
     const newContent = content.type ? "" : content
         .replace(RE_MENTIONS, (sub, ...args) => {
-            return `<a dir="ltr" class="link" role="link" href="/${sub.split("\n")[0].replace("@", "")}">${sub}</a>`;
+            const user_id = sub.replace(/<@/g, "").replace(/>/g, "");
+            
+            if(info?.mentions.length < 1) return `<a dir="ltr" class="link" role="link" href="/${user_id}">${sub}</a>`;
+
+            const find = info.mentions.find(m => m.user_id === user_id);
+            if(!find) return `<a dir="ltr" class="link" role="link" href="/${user_id}">${sub}</a>`;
+
+            return `<a dir="ltr" class="link" role="link" href="/${find.nickname}">${find.username}</a>`;
         })
         .replace(RE_HASHTAG, (sub, ...args) => {
             return `<a dir="ltr" class="link" role="link" href="/hashtag/${sub.split("\n")[0].replace("#", "")}">${sub}</a>`;

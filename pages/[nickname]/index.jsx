@@ -1,8 +1,8 @@
 import React from "react";
 import { apibaseurl } from "../../Services/constante";
-import client from "../../Services/client";
 import ProfileHome from "../../Views/Profile/ProfileHome";
 import { PostsListContextProvider } from "../../Context/PostsContext";
+import Client from "trender-client";
 
 function Profile(props) {
 
@@ -15,7 +15,11 @@ function Profile(props) {
 
 export const getServerSideProps = async ({ query }) => {
     let to_send = {};
-    
+    const client = new Client({
+        token: "",
+        apiurl: apibaseurl
+    });
+
     const nickname = query.nickname;
 
     const request = await fetch(`${apibaseurl}/seo/users/${nickname}`);

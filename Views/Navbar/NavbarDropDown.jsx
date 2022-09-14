@@ -6,18 +6,28 @@ import DropDown from "../../Components/Others/Dropdown";
 import CreateLink from "../../Components/Text/Link";
 import Svg from "../../Components/Svg/Svg";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
-function NavbarDropDown({ user, setUser }) {
+function NavbarDropDown({ user }) {
 
     const profilePath = user ? `/${user.nickname}` : "trender";
     const history = useRouter();
     const { t } = useTranslation();
+    const client = useClient();
 
-    const disconnect = () => {
+    const disconnect = async () => {
 
         if (typeof window !== "undefined") {
+            
             localStorage.removeItem("user_info");
-            setUser(null)
+            
+            await client.client.user.logout();
+
+            client.setValue({
+                ...client,
+                state: "logout"
+              })
+
             setTimeout(() => {
                 history.push("/login")
             }, 500);

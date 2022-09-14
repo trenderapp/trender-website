@@ -1,3 +1,36 @@
+.second_box {
+	width: 100%;
+	text-align: left;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	.box_icon {
+		cursor: pointer;
+		text-align: left;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		padding: 0 40px;
+		box-sizing: border-box;
+		gap: 5px;
+		margin: 0;
+		min-width: 0;
+		width: 150px;
+		background-color: var(--bg-secondary);
+		opacity: 0.8;
+		border: solid 1px;
+		border-radius: 4px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		padding-left: 16px;
+		padding-right: 16px;
+		margin-right: 16px;
+		margin-bottom: 16px;
+	}
+}
+
 .box {
     text-align: left;
 	display: flex;

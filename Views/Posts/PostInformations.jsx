@@ -3,16 +3,17 @@ import PageContainer from "../../Components/Home/PageContainer";
 import Loader from "../../Components/Others/Loader";
 import DisplayPosts from "../../Components/Posts/DisplayPosts";
 import PostList from "../../Components/Posts/PostList";
+import { useClient } from "../../Context";
 import { PostsListContext } from "../../Context/PostsContext";
 import { addPosts, resetPost } from "../../Context/Reducer/Posts";
-import client from "../../Services/client";
 
 function PostInformations({ post_id, props}) {
     const [informations, setInformations] = useState({});
     const [loader, setLoader] = useState(true);
     const [loading, setLoading] = useState(true);
     const { posts, dispatch } = useContext(PostsListContext);
-
+    const { client } = useClient();
+    
     useEffect(() => {
         dispatch()
         async function getData() {

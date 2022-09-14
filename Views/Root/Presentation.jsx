@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import dayjs from "dayjs";
 
 import { cdnbaseurl } from "../../Services/constante";
 import Seo from "../Seo";
 import CreateLink from "../../Components/Text/Link";
-import { AnimatedBoxImage } from "../../Components/Animations";
-import AnimatedTextTitle from "../../Components/Animations/AnimatedTextBox";
+import { AnimatedBoxImage, AnimatedIconBox, AnimatedTextTitleBox } from "../../Components/Animations";
 import { useTranslation } from "../../Context/Localization";
 import { ChangeLanguages } from "../../Components/Menu";
 import { NavbarDiv } from "../../Components/Navbar";
+import { useClient } from "../../Context";
 
 
 function Presentation() {
 
-    const [connect, setConnect] = useState(false);
-
-    useEffect(() => {
-        if(JSON.parse(localStorage.getItem("user_info"))) return setConnect(true)
-    }, [])
-
+    const { user } = useClient();
     const { t } = useTranslation("presentation");
 
     return (
@@ -29,9 +24,9 @@ function Presentation() {
                     <img src={`${cdnbaseurl}/assets/logos/white.png`} alt="app-logo" />
                 </CreateLink>
                 <NavbarDiv>
-                    <ChangeLanguages />
+                    <ChangeLanguages size={32} />
                     <div className="connect">
-                        {  connect ? <CreateLink noHover text={t("home")} href="/home" /> : <CreateLink noHover text={t("connect")} href="/login" /> }
+                        {  user ? <CreateLink noHover text={t("home")} href="/home" /> : <CreateLink noHover text={t("connect")} href="/login" /> }
                     </div>
                 </NavbarDiv>
             </header>
@@ -51,24 +46,22 @@ function Presentation() {
                 src: `${cdnbaseurl}/assets/backgrounds/placeholder_eric.png`,
                 alt: "juste un truc qui doit etre la"
             }} />
-            <AnimatedTextTitle title={t("ready_to_start")} button={{ href: "/register", text: t("register") }} />
+            <AnimatedTextTitleBox title={t("ready_to_start")} button={{ href: "/register", text: t("register") }} />
             <footer>
                 <div className="left">
-                    <h3>Application</h3>
-                    <CreateLink text="Télécharger" href="/" />
-                    <CreateLink text="Premium" href="/" />
-                    <CreateLink text="Status" href="/" />
+                    <h3>Application</h3> 
+                    <AnimatedIconBox link={"https://play.google.com/store/apps/details?id=com.trenderapp.social"} text="Android" icon={"play-store"} />
                 </div>
                 <div className="middle">
                     <h3>Informations</h3>
                     <CreateLink text="Contact" href="mailto:support@trenderapp.com" />
-                    <CreateLink text="API" href="/" />
+                    <CreateLink text="API" href="https://doc.trenderapp.com" />
                     <span>© {dayjs().year()} Trender</span>
                 </div>
                 <div className="right">
                     <h3>Légal</h3>
                     <CreateLink text="CGU" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
-                    <CreateLink text="Mentions Légal" href="/" />
+                    <CreateLink text="Mentions Légal" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
                 </div>
             </footer>
         </div>

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { apibaseurl } from "../../Services/constante";
 import MemberList from "../../Components/Members/List";
 import styles from "../../Style/All.module.scss";
-import client from "../../Services/client";
 import { specialcharnickname_regex } from "../../Services/regex";
+import { useClient } from "../../Context";
 
 function SearchModal() {
     const [value, setValue] = useState("");
     const [modal, setModal] = useState(false);
     const [info, setInfo] = useState([]);
+    const { client } = useClient();
     
     useEffect(() => {
         async function getData() {

@@ -12,7 +12,7 @@ function PostNormal() {
     return (
         <>
             <PostHeader info={info}/>
-            <Text embeds={info?.embeds} text={info.description} />
+            <Text info={info} embeds={info?.embeds} text={info.content} />
             <PostBottom info={info} />
         </>
     );

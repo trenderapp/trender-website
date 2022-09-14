@@ -7,7 +7,7 @@ function NotConnected() {
     const router = useRouter();
 
     useEffect(() => {
-        router.push("/login")
+        // router.push("/login")
     }, [])
 
     return <Loader />

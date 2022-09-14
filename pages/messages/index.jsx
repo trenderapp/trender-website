@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useClient } from "../../Context";
 
-import { UserContext } from "../../Context/AppContext";
 import MessagesHome from "../../Views/Messages";
 
 function Messages() {
-    const user = useContext(UserContext)
+    const { user } = useClient()
 
     return (
         <MessagesHome user={user} />

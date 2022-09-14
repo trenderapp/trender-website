@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
 import ImageStyles from "./Images.module.scss";
 import Image from "next/image";
 import { Svg } from "../Svg";
 import { SimpleColor } from "../../Services/Canvas";
-import client from "../../Services/client";
 import BigImage from "./BigImage";
+import { useClient } from "../../Context";
 
 const ImageCarroussel = ({ pictures, post_id, user_id }) => {
 
     const [displayImg, setDisplay] = useState(false)
-
+    const { client } = useClient();
     const [img, setImg] = useState({
         src: pictures[0],
         position: 0

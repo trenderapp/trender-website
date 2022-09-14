@@ -1,10 +1,10 @@
 import React from "react";
 import Markdown from "./Markdown/Markdown";
 
-function Text({ text, embeds }) {
+function Text({ text, embeds, info }) {
     return (
         <>
-            <Markdown content={text ?? <br />} />
+            <Markdown info={info} content={text ?? <br />} />
         </>
     )
 }

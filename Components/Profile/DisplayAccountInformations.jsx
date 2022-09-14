@@ -5,23 +5,22 @@ import styles from "../../Style/All.module.scss"
 import Banner from "../Members/Banner";
 import { isMobile } from 'react-device-detect';
 import Svg from "../Svg/Svg";
-import client from "../../Services/client";
 import CreateLink from "../Text/Link";
 import Text from "../Text/Text";
 import dayjs from "dayjs";
 import UserFlags from "trender-client/Permissions/Flags";
 import EditProfile from "./EditProfile";
-import { UserContext } from "../../Context/AppContext";
 import { AlertContext } from "../../Context/AlertContext";
 import FixedMenu from "../Others/FixedMenu";
 import UserBadges from "../Members/Badges";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function DisplayAccountInformations({ informations }) {
 
     const { t, currentLanguage } = useTranslation();
     const [edit, setEdit] = useState(false);
-    const { user  } = useContext(UserContext);
+    const { user, client } = useClient();
     const [following, setFollowing] = useState(informations?.following ? true : false);
     const { setAlert } = useContext(AlertContext);
     const [extraOptions, setExtraOptions] = useState(false);

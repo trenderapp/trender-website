@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Helmet from "react-helmet";
-import { UserProvider } from "../Context/AppContext";
 
 import "../Style/error.scss";
 import "../Style/style.scss";
@@ -14,8 +13,9 @@ import "../Style/variables.scss";
 import { AlertContextProvider } from "../Context/AlertContext";
 import ThemeContextProvider from "../Context/ThemeContext";
 import Alert from "../Components/Others/Alert/Alert";
-import client, { user_token } from "../Services/client";
 import { LanguageProvider } from "../Context/Localization";
+import ClientProvider from "../Context/Client/ClientProvider";
+import { useClient } from "../Context";
 
 function MyApp({ Component, pageProps }) {
 
@@ -25,39 +25,29 @@ function MyApp({ Component, pageProps }) {
     type: "",
     message: ""
   })
-  const [user, setUser] = useState(null);
+  const { state } = useClient();
 
   useEffect(() => {
-    
-    async function getUserInformations() {
-      
-      if(user_token) {
-        const informations = await client.informations();
-        if(informations.error) return;
-        return setUser(informations.data)
-      }
-    }
 
-    getUserInformations();
     setTheme(localStorage.getItem("theme") ?? "theme-dark-blue");
     
 
-  }, [])
+  }, [state])
 
   return (
     <ThemeContextProvider value={{ theme, setTheme }}>
       <AlertContextProvider value={{ alert, setAlert }}>
-        <UserProvider value={{user, setUser}}>
-          <LanguageProvider>
-            <Helmet bodyAttributes={{
-                  class: theme
-              }} />
-              <div>
-                <Alert />
-                <Component {...pageProps} />
-              </div>
-          </LanguageProvider>
-        </UserProvider>
+        <ClientProvider>
+            <LanguageProvider>
+              <Helmet bodyAttributes={{
+                    class: theme
+                }} />
+                <div>
+                  <Alert />
+                  <Component {...pageProps} />
+                </div>
+            </LanguageProvider>
+        </ClientProvider>
       </AlertContextProvider>
     </ThemeContextProvider>
   )

@@ -4,12 +4,13 @@ import styles from "../../Style/All.module.scss";
 import NotificationsAll from "./All/All";
 import NotificationsFollows from "./Follows/Follows";
 import Svg from "../../Components/Svg/Svg";
-import { user_token } from "../../Services/client";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function Notifications({ setPreview }) {
     const [section, setSection] = useState("all");
     const { t } = useTranslation()
+    const { token } = useClient();
 
     return (
         <div className="notifications">
@@ -24,7 +25,7 @@ function Notifications({ setPreview }) {
                     <button className="section-button" onClick={() => setSection("all")}>Tous</button>
                     <button className="section-button" onClick={() => setSection("follow")}>Abonnement</button>
                 </div>
-                { user_token && section === "all" ? <NotificationsAll /> : <NotificationsFollows  /> }
+                { token && section === "all" ? <NotificationsAll /> : <NotificationsFollows  /> }
             </FixedMenu>
         </div>
     )

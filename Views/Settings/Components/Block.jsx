@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import client from "../../../Services/client";
 import Avatar from "../../../Components/Members/Avatar";
 import styles from "../../../Style/All.module.scss";
 import stylesSettings from "../../../Style/Settings.module.scss";
 import Svg from "../../../Components/Svg/Svg";
 import { AlertContext } from "../../../Context/AlertContext";
+import { useClient } from "../../../Context";
 
 function Block({ full_height }) {
 
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState([]);
     const { setAlert } = useContext(AlertContext);
+    const { client } = useClient();
 
     useEffect(() => {
         async function getData() {

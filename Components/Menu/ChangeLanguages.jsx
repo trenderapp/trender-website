@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { languageList } from "../../Context/Localization/languages";
 import FixedMenu from "./FixedMenu";
+import FixedMenuStyle from "./Menu.module.scss";
 import styles from "../../Style/All.module.scss";
 import { useTranslation } from "../../Context/Localization";
 import { Svg } from "../Svg";
@@ -9,8 +10,9 @@ import { cdnbaseurl } from "../../Services/constante";
 
 function ChangeLanguages({ size, displayText }) {
 
-    const { t, setLanguage } = useTranslation();
+    const { t, setLanguage, currentLanguage } = useTranslation();
     const [display, setDisplay] = useState(false);
+
     return (
         <div>
             <span className={styles.row}><Svg size={size} margin={displayText ? false : true} name="globe" hover pointer onClick={() => setDisplay(true)} /> {displayText && t("language")}</span>
@@ -20,7 +22,7 @@ function ChangeLanguages({ size, displayText }) {
                     languageList.map((l, index) => <span 
                         onClick={() => setLanguage(l)} 
                         key={index} 
-                        className={`${styles.row} ${styles.justify_center} ${styles.full_width} ${styles.padding_10} ${styles.border_bottom} ${styles.pointer} ${styles.hover}`}>
+                        className={`${styles.row} ${l.locale === currentLanguage.locale ? FixedMenuStyle.selected : ""} ${styles.justify_center} ${styles.full_width} ${styles.padding_10} ${styles.border_bottom} ${styles.pointer} ${styles.hover}`}>
                         <RoundedIcon size={22} src={`${cdnbaseurl}/assets/icons/flags/${l.locale}.png`} /> {l.language}
                         </span>
                     )

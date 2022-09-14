@@ -19,6 +19,11 @@
         border-radius: 8px;
         background-color: var(--bg-secondary);
         padding: 15px;
+
+        .selected {   
+            background-color: var(--bg-third);
+            border-radius: 8px;
+        }
         
         .align_center {
             align-items: center;

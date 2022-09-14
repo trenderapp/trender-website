@@ -3,16 +3,17 @@ import FixedMenu from "../../../../../Others/FixedMenu";
 import Svg from "../../../../../Svg/Svg";
 import styles from "../../../../../../Style/All.module.scss";
 import { AlertContext } from "../../../../../../Context/AlertContext";
-import client from "../../../../../../Services/client";
 import { PostsListContext } from "../../../../../../Context/PostsContext";
 import { deletePosts } from "../../../../../../Context/Reducer/Posts";
 import { useTranslation } from "../../../../../../Context/Localization";
+import { useClient } from "../../../../../../Context";
 
 function Owner({ post_id, pined, setShowModal }) {
 
     const { t } = useTranslation();
     const { setAlert } = useContext(AlertContext);
     const { dispatch } = useContext(PostsListContext);
+    const { client } = useClient()
 
     const deletePost = async () => {
         const response = await client.post.delete(post_id);

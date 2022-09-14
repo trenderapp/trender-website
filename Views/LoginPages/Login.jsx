@@ -1,9 +1,8 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useRouter } from "next/router"
 import { detect } from "detect-browser";
 
 import { apibaseurl } from "../../Services/constante";
-import { UserContext } from "../../Context/AppContext";
 
 import CreateLink from "../../Components/Text/Link";
 import Svg from "../../Components/Svg/Svg";
@@ -14,13 +13,14 @@ import LoginBottomLinks from "../../Components/Login/BottomLinks";
 import CaptchaBlock from "../../Components/Security/CaptchaBlock";
 import Client from "trender-client";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function LoginHome() {
 
     const router = useRouter();
     const { t } = useTranslation();
 
-    const { setUser } = useContext(UserContext);
+    const client = useClient();
     const [users, setUsers] = useState({ 
         email: '',
         password: ''
@@ -39,7 +39,7 @@ function LoginHome() {
         e.preventDefault();
         setShowPass(!showPass)
       }
-
+      
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -56,7 +56,7 @@ function LoginHome() {
                 const { os } = browser;
                 let isiPad;
                 if (window.isNative) {
-                    friendly_name = `Trender Desktop on ${os}`;
+                    friendly_name = `${os} - Trender Desktop`;
                 } else {
                     if (name === "ios") {
                         name = "safari";
@@ -67,10 +67,10 @@ function LoginHome() {
                     }
                     if (os === "Mac OS" && navigator.maxTouchPoints > 0)
                         isiPad = true;
-                    friendly_name = `${name} on ${isiPad ? "iPadOS" : os}`;
+                    friendly_name = `${name} ${isiPad ? "iPadOS" : os} - Trender Desktop`;
                 }
             } else {
-                friendly_name = "Unknown Device";
+                friendly_name = "Unknown Device - Trender Desktop";
             }
 
             const requestOptions = {
@@ -102,12 +102,14 @@ function LoginHome() {
     
                 localStorage.setItem("user_info", JSON.stringify(response));
                 
-                const client = new Client(response.token)
-                const informations = await client.informations();
+                const new_client = new Client(response.token)
+                const informations = await new_client.informations();
                 
-                setUser(informations.data);
-    
-                router.replace("/home")
+                client.setValue({ ...client, client: new_client, token: response.token, user: informations.data, state: "loged" })
+            
+                setTimeout(() => {
+                    router.replace("/home")
+                }, 500);
             }
         }
     };

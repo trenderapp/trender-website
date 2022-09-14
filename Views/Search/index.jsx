@@ -5,8 +5,8 @@ import MemberList from "../../Components/Members/List";
 import Svg from "../../Components/Svg/Svg";
 import Loader from "../../Components/Others/Loader";
 import DisplayPosts from "../../Components/Posts/DisplayPosts";
-import client from "../../Services/client";
 import PageContainer from "../../Components/Home/PageContainer";
+import { useClient } from "../../Context";
 
 function SearchHome({ props }){
 
@@ -15,9 +15,10 @@ function SearchHome({ props }){
     const { q, type } = props;
 
     const [element, setElement] = useState("users");
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState([]);
     const [value, setValue] = useState(q);
     const [loader, setLoader] = useState(true);
+    const { client } = useClient();
 
     useEffect(() => {
         async function getData() {

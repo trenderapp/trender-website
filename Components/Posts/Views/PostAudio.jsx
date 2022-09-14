@@ -14,7 +14,7 @@ function PostAudio() {
         <>
             <PostHeader info={info} />
             <div className="post-content-audio">
-                <Text text={info.description} />
+                <Text info={info} text={info.content} />
                 { /** <AudioPlayer tracks={{ audioSrc: `${client.post.file(info.from.user_id, info.post_id, info.attachments[0].name)}` }} audioSrc={`${client.post.file(info.from.user_id, info.post_id, info.attachments[0].name)}`} /> */ }
             </div>
             <PostBottom info={info} />

@@ -2,14 +2,15 @@ import React, { useContext, useState } from "react";
 import styles from "../../../Style/All.module.scss";
 import CreatePostStyle from "./CreatePost.module.scss";
 import Button from "../../Buttons/Button";
-import TextAreaInput from "../../Inputs/Textarea";
+import TextAreaInput from "../../Inputs/Textarea.jsx";
 import Svg from "../../Svg/Svg";
 import { AlertContext } from "../../../Context/AlertContext";
 import ImagePlayer from "../Views/Components/Images/ImagePlayer";
 import VideoPlayer from "../Views/Components/Videos/VideoPlayer";
 import ProgressBar from "../../Others/ProgressBar";
-import client, { axiosInstance } from "../../../Services/client";
+import { axiosInstance } from "../../../Services/client";
 import { useTranslation } from "../../../Context/Localization";
+import { useClient } from "../../../Context";
 
 function CreatePost() {
 
@@ -20,15 +21,16 @@ function CreatePost() {
     })
     const { setAlert } = useContext(AlertContext);
     const [postInfo, setPost] = useState({
-        description: ""
+        content: ""
     })
+    const { client } = useClient();
     const [{ files, attachments }, setFiles] = useState({
         files: [],
         attachments: []
     })
     
     const sendInfo = async () => {
-        if(!postInfo.description || postInfo.description.length > 500) return;
+        if(!postInfo.content || postInfo.content.length > 500) return;
         if(sending.send) return setAlert({ display: true, type: "error", message: `${t(`sending_form`)}`});
 
         let data = { ...postInfo };
@@ -101,7 +103,7 @@ function CreatePost() {
 
     return (
         <div className={CreatePostStyle.create_post}>
-            <TextAreaInput placeholder={t("create_story")} onChange={(e) => setPost({ ...postInfo, description: e.target.value })} max_length={500} label={t("create_post")} />
+            <TextAreaInput placeholder={t("create_story")} setValue={(e) => setPost({ ...postInfo, content: e })} value={postInfo.content} max_length={500} label={t("create_post")} />
             { sending.progress > 0 && <ProgressBar progress={sending.progress} /> }
             <div style={{
                 marginTop: "5px"
@@ -122,7 +124,7 @@ function CreatePost() {
                     <Svg onClick={() => document.getElementById("files").click()} pointer hover name="all-media" size={24} margin />
                     <input style={{ display: "none" }} onChange={(e) => addFiles(e)} accept="image/jpeg, image/png, image/webp, image/gif, video/mp4, video/quicktime, video/webm" id="files" type="file" multiple />
                 </div>
-                <Button disabled={!postInfo.description.length > 0 || postInfo.description.length > 500} onClick={() => sendInfo()} label={t("publish")} />
+                <Button disabled={!postInfo.content.length > 0 || postInfo.content.length > 500} onClick={() => sendInfo()} label={t("publish")} />
             </div>
         </div>
     )

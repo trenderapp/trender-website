@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 
 import styles from "../../../Style/All.module.scss";
-import client from "../../../Services/client";
 import { AlertContext } from "../../../Context/AlertContext";
 import MemberInformations from "../../../Components/Members/Informations";
 import CreateLink from "../../../Components/Text/Link";
 import { useTranslation } from "../../../Context/Localization";
+import { useClient } from "../../../Context";
 
-function NotificationsFollows({ user }) {
+function NotificationsFollows() {
 
     const { t } = useTranslation();
     const [informations, setInfo] = useState([]);
     const { setAlert } = useContext(AlertContext);
-
+    const { client } = useClient();
+    
     useEffect(() => {
         async function getData() {
             const response = await client.user.follow.unacceptedList();

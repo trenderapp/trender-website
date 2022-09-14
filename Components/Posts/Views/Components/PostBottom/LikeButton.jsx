@@ -3,8 +3,8 @@ import { useContext } from "react";
 import Svg from "../../../../Svg/Svg";
 import { SinglePostContext } from "../../../PostContext";
 import { AlertContext } from "../../../../../Context/AlertContext";
-import client from "../../../../../Services/client";
 import { useTranslation } from "../../../../../Context/Localization";
+import { useClient } from "../../../../../Context";
 // import styles from "./PostBottom.module.scss";
 
 function LikeButton() {
@@ -12,6 +12,7 @@ function LikeButton() {
     const { t } = useTranslation();
     const { info, setInfo } = useContext(SinglePostContext)
     const { setAlert } = useContext(AlertContext);
+    const { client } = useClient()
 
     const createLike = async () => {
         const response = await client.post.like(info.post_id);

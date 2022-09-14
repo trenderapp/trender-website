@@ -4,12 +4,13 @@ import { isMobile } from 'react-device-detect';
 
 import stylesMember from "./Members.module.scss"
 import styles from "../../Style/All.module.scss"
-import client from "../../Services/client";
 import { cdnbaseurl } from "../../Services/constante";
+import { useClient } from "../../Context";
 
 function Banner({ user_id, custom, banner, accent_color, onClick = undefined, pointer = undefined }) {
 
-    console.log(custom, banner, accent_color);
+    const { client } = useClient()
+
     return banner ? 
         <Image onClick={onClick} 
             className={`${styles.background} ${pointer ? styles.pointer : ""}`} 

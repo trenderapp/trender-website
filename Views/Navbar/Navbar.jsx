@@ -5,7 +5,6 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { cdnbaseurl } from "../../Services/constante";
 import { SimpleColor } from "../../Services/Canvas";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { UserContext } from "../../Context/AppContext";
 
 import styles from "../../Style/All.module.scss";
 import NavbarDropDown from "./NavbarDropDown";
@@ -16,14 +15,14 @@ import NavbarLink from "../../Components/Navbar/NavbarLink";
 import NavbarDiv from "../../Components/Navbar/NavbarDiv";
 import Svg from "../../Components/Svg/Svg";
 import Avatar from "../../Components/Members/Avatar";
-import client from "../../Services/client";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 
 function Navbar({ showsearch }) {
 
     const { theme } = useContext(ThemeContext);
-    const { user, setUser } = useContext(UserContext);
+    const { user, client } = useClient();
     const { t } = useTranslation();
 
     const [openDropdown, setOpenDropdown] = useState(false);
@@ -48,7 +47,7 @@ function Navbar({ showsearch }) {
                 { user ? <Avatar pointer disconnected={!user} avatar={user.avatar} user_id={user.user_id} src={user ? client.user.avatar(user.user_id, user.avatar) : SimpleColor()} onClick={() => setOpenDropdown(!openDropdown)} /> : <CreateLink text={t("connect")} href="/login" />}
                 <div>
                     {
-                        openDropdown && <OutsideClickHandler onOutsideClick={() => setOpenDropdown(!openDropdown)}><NavbarDropDown setUser={setUser} user={user}  /></OutsideClickHandler>
+                        openDropdown && <OutsideClickHandler onOutsideClick={() => setOpenDropdown(!openDropdown)}><NavbarDropDown user={user}  /></OutsideClickHandler>
                     }
                 </div>
             </NavbarDiv>

@@ -8,11 +8,11 @@ import TextInput from "../Inputs/Text";
 import TextAreaInput from "../Inputs/Textarea";
 import Svg from "../Svg/Svg";
 import { AlertContext } from "../../Context/AlertContext";
-import client, { axiosInstance } from "../../Services/client";
+import { axiosInstance } from "../../Services/client";
 import { SimpleColor } from "../../Services/Canvas";
-import { UserContext } from "../../Context/AppContext";
 import ProgressBar from "../Others/ProgressBar";
 import { useTranslation } from "../../Context/Localization";
+import { useClient } from "../../Context";
 
 function EditProfile({ setEdit, user_info }) {
 
@@ -23,7 +23,8 @@ function EditProfile({ setEdit, user_info }) {
         progress: 0
     })
 
-    const { setUser } = useContext(UserContext);
+    const oldClient = useClient();
+    const { client } = useClient();
     const { setAlert } = useContext(AlertContext);
     const [profilePictures, setProfilePicture] = useState({
         banner:  modif.banner ? client.user.banner(modif.user_id, modif.banner) : SimpleColor(),
@@ -132,7 +133,10 @@ function EditProfile({ setEdit, user_info }) {
 
         if(response?.error) return setAlert({ display: true, type: "error", message: `[${response.error.code}] ${t(`${response.error.code}`)}` });
 
-        setUser(response.data);
+        oldClient.setValue({
+            ...oldClient,
+            user: response.data
+        });
         setAlert({ display: true, type: "success", message: t("success") });
     }
 

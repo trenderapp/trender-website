@@ -1,2 +1,3 @@
 export { default as AnimatedBoxImage } from "./AnimatedBoxImage";
-export { default as AnimtedTextBox } from "./AnimatedTextBox";
+export { default as AnimatedTextTitleBox } from "./AnimatedTextTitleBox";
+export { default as AnimatedIconBox } from "./AnimatedIconBox";
