@@ -102,7 +102,10 @@ function LoginHome() {
     
                 localStorage.setItem("user_info", JSON.stringify(response));
                 
-                const new_client = new Client(response.token)
+                const new_client = new Client({
+                    token: response.token,
+                    apiurl: apibaseurl
+                })
                 const informations = await new_client.informations();
                 
                 client.setValue({ ...client, client: new_client, token: response.token, user: informations.data, state: "loged" })

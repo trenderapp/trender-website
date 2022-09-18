@@ -21,11 +21,11 @@ if (typeof window !== "undefined") {
 const RE_TWEMOJI = /:(\w+):/g;
 
 // ! FIXME: Move to library
-const RE_HASHTAG = /#[A-z0-9]{1,30}/g;
+const RE_HASHTAG = /#[A-z0-9]/g;
 const RE_BR = /\n/g;
 
 // export const RE_MENTIONS = /<@([A-z0-9]{26})>/g;
-export const RE_MENTIONS = /<@[A-z0-9]{1,30}>/g;
+export const RE_MENTIONS = /@[A-z0-9]{1,33}/g;
 export const RE_LINKS = /(https?:\/\/[^\s]+)/g;
 
 export default function Renderer({ content, info }) {
@@ -37,14 +37,14 @@ export default function Renderer({ content, info }) {
     // We don't care if the mention changes.
     const newContent = content.type ? "" : content
         .replace(RE_MENTIONS, (sub, ...args) => {
-            const user_id = sub.replace(/<@/g, "").replace(/>/g, "");
+            const nickname = sub.replace(/@/g, "");
             
-            if(info?.mentions.length < 1) return `<a dir="ltr" class="link" role="link" href="/${user_id}">${sub}</a>`;
+            if(info?.mentions.length < 1) return `<a dir="ltr" class="link" role="link" href="/${nickname}">${sub}</a>`;
 
-            const find = info.mentions.find(m => m.user_id === user_id);
+            const find = info.mentions.find(m => m.nickname === nickname);
             if(!find) return `<a dir="ltr" class="link" role="link" href="/${user_id}">${sub}</a>`;
 
-            return `<a dir="ltr" class="link" role="link" href="/${find.nickname}">${find.username}</a>`;
+            return `<a dir="ltr" class="link" role="link" href="/${nickname}">${find.username}</a>`;
         })
         .replace(RE_HASHTAG, (sub, ...args) => {
             return `<a dir="ltr" class="link" role="link" href="/hashtag/${sub.split("\n")[0].replace("#", "")}">${sub}</a>`;

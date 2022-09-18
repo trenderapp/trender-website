@@ -129,9 +129,8 @@ function TextAreaInput({ value, setValue, label, name, placeholder = "", max_len
                     content.splice(
                         index,
                         search.length + 1,
-                        "<@",
+                        "@",
                         state.matches[state.selected].user_id,
-                        "> ",
                     );
                 }
 
