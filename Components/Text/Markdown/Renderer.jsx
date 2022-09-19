@@ -42,7 +42,7 @@ export default function Renderer({ content, info }) {
             if(info?.mentions.length < 1) return `<a dir="ltr" class="link" role="link" href="/${nickname}">${sub}</a>`;
 
             const find = info.mentions.find(m => m.nickname === nickname);
-            if(!find) return `<a dir="ltr" class="link" role="link" href="/${user_id}">${sub}</a>`;
+            if(!find) return `<a dir="ltr" class="link" role="link" href="/${nickname}">${sub}</a>`;
 
             return `<a dir="ltr" class="link" role="link" href="/${nickname}">${find.username}</a>`;
         })

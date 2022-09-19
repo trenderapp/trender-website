@@ -2,7 +2,7 @@ import * as React from 'react';
 import Client from 'trender-client';
 import ClientContext from './ClientContext';
 import { useRouter } from "next/router";
-import { apibaseurl } from '../../Services/constante';
+import { apibaseurl, websocketurl } from '../../Services/constante';
 
 function ClientProvider({ children }) {
     
@@ -16,7 +16,6 @@ function ClientProvider({ children }) {
         state: "loading"
     });
     const history = useRouter();
-
     React.useEffect(() => {
         async function splash() {
             const info = localStorage.getItem("user_info");

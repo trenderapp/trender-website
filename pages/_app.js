@@ -15,7 +15,7 @@ import ThemeContextProvider from "../Context/ThemeContext";
 import Alert from "../Components/Others/Alert/Alert";
 import { LanguageProvider } from "../Context/Localization";
 import ClientProvider from "../Context/Client/ClientProvider";
-import { useClient } from "../Context";
+import { WebSocketProvider } from "../Context";
 
 function MyApp({ Component, pageProps }) {
 
@@ -25,28 +25,26 @@ function MyApp({ Component, pageProps }) {
     type: "",
     message: ""
   })
-  const { state } = useClient();
 
   useEffect(() => {
 
     setTheme(localStorage.getItem("theme") ?? "theme-dark-blue");
     
-
-  }, [state])
+  }, [])
 
   return (
     <ThemeContextProvider value={{ theme, setTheme }}>
       <AlertContextProvider value={{ alert, setAlert }}>
         <ClientProvider>
+          <WebSocketProvider>
             <LanguageProvider>
               <Helmet bodyAttributes={{
                     class: theme
                 }} />
-                <div>
                   <Alert />
                   <Component {...pageProps} />
-                </div>
             </LanguageProvider>
+          </WebSocketProvider>
         </ClientProvider>
       </AlertContextProvider>
     </ThemeContextProvider>

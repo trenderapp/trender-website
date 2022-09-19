@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import WebsocketProvider from "../../Context/AppContext";
+import React, { useRef } from "react";
 import styles from "../../Style/All.module.scss";
 import Navbar from "../../Views/Navbar/Navbar";
 import Seo from "../../Views/Seo";
@@ -7,11 +6,7 @@ import HomeStyles from "./Home.module.scss";
 
 function PageContainer({ children, description, image, title, showsearch, onBottom, scrollTop }) {
 
-  const [Websocket, setWebsocket] = useState({ readyState: 0 });
   const refPage = useRef();
-    /*if(typeof window !== "undefined") {
-      var ws = new WebSocket(websocketurl)
-    }*/
 
     const handleScroll = async (e) => {
       const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
@@ -28,15 +23,7 @@ function PageContainer({ children, description, image, title, showsearch, onBott
       }
     }
 
-        /*ws.onopen = () => {
-      if(ws.readyState === ws.OPEN){
-        setWebsocket(ws);
-        
-      }  
-    }*/
-
     return (
-      <WebsocketProvider value={Websocket}>
         <div ref={refPage} onScroll={handleScroll} className={HomeStyles.container}>
             <Seo description={description} image={image} title={title} />
             <Navbar showsearch={showsearch} />
@@ -62,7 +49,6 @@ function PageContainer({ children, description, image, title, showsearch, onBott
               }
             </section>
         </div>
-      </WebsocketProvider>
     )
 }
 
