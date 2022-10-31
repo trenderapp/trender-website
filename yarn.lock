@@ -2973,13 +2973,12 @@ totalist@^1.0.0:
   resolved "https://registry.yarnpkg.com/totalist/-/totalist-1.1.0.tgz#a4d65a3e546517701e3e5c37a47a70ac97fe56df"
   integrity sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==
 
-trender-client@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/trender-client/-/trender-client-1.3.0.tgz#3a79c1fcfb5a4808225a4d4b2fc45cd45efea36b"
-  integrity sha512-NkENdFRSikJy1GuHgLe1elk1dDYZuYnEti59RVNwKxOf2letJapwisJ2laj+2rgghtl30ygCoAA6h59+8U4yZA==
+trender-client@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/trender-client/-/trender-client-1.3.8.tgz#dc253ca3426844ce460680085b0fb51134968779"
+  integrity sha512-0gVXSTFrNpQZpqz91PZ2NW4EfHwDCD0zsaHMtxyypYswRQo+Y8uXBJQsT984JMTipQqBzVEmzKO3x6TDUIYjKQ==
   dependencies:
     axios "^0.27.2"
-    ws "^8.8.1"
 
 tsconfig-paths@^3.11.0:
   version "3.12.0"
@@ -3147,11 +3146,6 @@ ws@^7.3.1:
   version "7.5.7"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.7.tgz#9e0ac77ee50af70d58326ecff7e85eb3fa375e67"
   integrity sha512-KMvVuFzpKBuiIXW3E4u3mySRO2/mCHSyZDJQM5NQ9Q9KHWHWh0NHgfbRMLLrceUK5qAL4ytALJbpRMjixFZh8A==
-
-ws@^8.8.1:
-  version "8.8.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.8.1.tgz#5dbad0feb7ade8ecc99b830c1d77c913d4955ff0"
-  integrity sha512-bGy2JzvzkPowEJV++hF07hAD6niYSr0JzBNo/J29WsB57A2r7Wlc1UFcTR9IzrPvuNVO4B8LGqF8qcpsVOhJCA==
 
 yallist@^4.0.0:
   version "4.0.0"

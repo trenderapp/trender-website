@@ -57,7 +57,7 @@ function RegisterHome() {
         if (users.password !== users.password2) return setResponse({ is_error: true, content: t(`different_password`) });
         if(users.password.length < 8) return setResponse({ is_error: true, content: t(`password_security`) });
 
-        if (!dayjs(birthday).isBefore(max_birthday) || !dayjs(birthday).isAfter(min_birthday)) return setResponse({ is_error: true, content: t(`4`) });
+        if(dayjs(birthday).isBefore(min_birthday) || dayjs(birthday).isAfter(max_birthday) || dayjs(birthday).isSame(min_birthday)) return setResponse({ is_error: true, content: t(`4`) });
     
         if(!captcha) return setResponse({ is_error: true, content: t(`human_verif`) })
     
@@ -67,11 +67,10 @@ function RegisterHome() {
             "Content-Type": "application/json" 
           },
           body: JSON.stringify({
-            code: captcha,
+            captcha_code: captcha,
             email: users.email.toLowerCase(),
             username: users.username,
             password: users.password,
-            password2: users.password2,
             birthday: birthday
           }),
         };

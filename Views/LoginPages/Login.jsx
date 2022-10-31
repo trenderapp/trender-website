@@ -82,7 +82,7 @@ function LoginHome() {
                     email: users.email.toLowerCase(),
                     password: users.password,
                     device_name: friendly_name,
-                    code: captcha
+                    captcha_code: captcha
                 })
             };
     
