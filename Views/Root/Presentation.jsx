@@ -51,6 +51,7 @@ function Presentation() {
                 <div className="left">
                     <h3>Application</h3> 
                     <AnimatedIconBox link={"https://play.google.com/store/apps/details?id=com.trenderapp.social"} text="Android" icon={"play-store"} />
+                    <AnimatedIconBox link={"https://apps.apple.com/app/trender-social-network/id6443865410"} text="IOS" icon={"apple-icon"} />
                 </div>
                 <div className="middle">
                     <h3>Informations</h3>
