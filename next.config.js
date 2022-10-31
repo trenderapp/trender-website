@@ -32,6 +32,7 @@ const config = {
   },
   images: {
     domains: [
+      'cdn2.trenderapp.com',
       'cdn.trenderapp.com',
       'cdn.boteric.fr'
     ],
