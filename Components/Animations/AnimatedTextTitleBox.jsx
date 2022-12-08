@@ -23,7 +23,7 @@ const fadeInUp = {
         once: true
     }
 };
-function AnimatedTextTitle({ title, text, button = { href, text } }) {
+function AnimatedTextTitle({ title, text, button }) {
 
     return (
         <motion.div className={styles.box}>
