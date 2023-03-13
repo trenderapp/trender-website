@@ -62,7 +62,7 @@ function AnimatedTwoDivBox({ title_1, text_1, text_2 }) {
                 }}>{text_2}</motion.div>
             </motion.div>
             <motion.div className={styles.informations}>     
-                <motion.h2 {...fadeInUp} className={styles.title}>{title_1}</motion.h2>
+                <motion.h1 {...fadeInUp} className={styles.title}>{title_1}</motion.h1>
                 <motion.p {...fadeInUp} className={styles.text}>{text_1}</motion.p>
             </motion.div>
         </motion.div>

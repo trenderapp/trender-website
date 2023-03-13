@@ -8,15 +8,21 @@ function Seo({ children, title, description, image, url }) {
     const meta_title = `${title ? `${title} - Trender` : `Trender - Create the Next Trend and Become a Recognized Creator`}`;
     const meta_image = image ?? `${cdnbaseurl}/assets/icons/circles/chatzone_255.png`;
     const meta_url = url ?? "https://www.trenderapp.com";
-    const keywords = "Trender, social network, trend, creator, free, premium subscription, Twitch, YouTube, NFT, crypto, WEB3, AI, security, moderation, analytics, monetization, copyright protection, data proctection, friendly";
+    const keywords = "Trender, trenderapp, social media, trenderapp.com, trender.com, social network, trend, creator, free, premium subscription, Twitch, YouTube, NFT, crypto, WEB3, AI, security, moderation, analytics, monetization, copyright protection, data proctection, friendly";
+    const current_year = new Date().getFullYear();
 
     return (
         <Head>
             <title>{meta_title}</title>
             <meta name="description" content={meta_description} />
             <link rel="icon" href={`${cdnbaseurl}/assets/icons/circles/chatzone_255.png`} />
-            <link rel="canonical" href="https://www.trenderapp.com" />
+            <link rel="canonical" href={meta_url} />
+            <link rel="prefetch" href={meta_url} / >
             <meta name="keywords" content={keywords} />
+
+            <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+            <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+            <meta name="robots" content="index, follow" />
 
             <meta charSet="utf-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -31,6 +37,17 @@ function Seo({ children, title, description, image, url }) {
 
             */
             }
+
+            <meta name="dc.Title" content={title} />
+            <meta name="dc.creator" content="Trender Inc." />
+            <meta name="dc.description" content={description} />
+            <meta name="dc.identifier" content={meta_url} />
+            <meta name="dc.relation" content={meta_url} />
+            <meta name="dc.source" content={meta_url} />
+            <meta name="dc.Coverage" content="1950s"/>
+            <meta name="dc.Rights" content={`Copyright ${current_year}, Trender Inc.`} />
+
+            <meta property="og:url" content={meta_url} />
             <meta property="og:type" content="website" />
             <meta property="og:title" content={meta_title} />
             <meta property="og:site_name" content={meta_title} />
@@ -43,6 +60,7 @@ function Seo({ children, title, description, image, url }) {
             <meta name="twitter:title" content={meta_title} />
             <meta name="twitter:description" content={meta_description} />
             <meta name="twitter:image" content={meta_image} />
+            
             { children }
             {
                 process.env.NEXT_PUBLIC_NODE_ENV === "PROD" && <script async src="https://www.googletagmanager.com/gtag/js?id=G-BBH64R6EXF"></script>

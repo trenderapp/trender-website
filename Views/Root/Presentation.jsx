@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { cdnbaseurl } from "../../Services/constante";
 import Seo from "../Seo";
 import CreateLink from "../../Components/Text/Link";
-import { AnimatedBoxImage, AnimatedIconBox, AnimatedTextTitleBox, AnimatedTwoDivBox } from "../../Components/Animations";
+import { AnimatedIconBox, AnimatedTwoDivBox } from "../../Components/Animations";
 import { detect } from "detect-browser";
 import { useTranslation } from "../../Context/Localization";
 import { ChangeLanguages } from "../../Components/Menu";
