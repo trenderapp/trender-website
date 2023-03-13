@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { cdnbaseurl } from "../../Services/constante";
 import Seo from "../Seo";
 import CreateLink from "../../Components/Text/Link";
-import { AnimatedBoxImage, AnimatedIconBox, AnimatedTextTitleBox } from "../../Components/Animations";
+import { AnimatedBoxImage, AnimatedIconBox, AnimatedTextTitleBox, AnimatedTwoDivBox } from "../../Components/Animations";
 import { detect } from "detect-browser";
 import { useTranslation } from "../../Context/Localization";
 import { ChangeLanguages } from "../../Components/Menu";
@@ -28,9 +28,9 @@ function Presentation() {
                 const { os } = browser;
                 
                 if(os === "Android OS" || os === "android") {
-                    setPlateform("android")
+                    setPlateform("https://play.google.com/store/apps/details?id=com.trenderapp.social")
                 } else if(os === "iOS") {
-                    setPlateform("ios")
+                    setPlateform("https://apps.apple.com/app/trender-social-network/id6443865410")
                 }
             }
         }
@@ -38,23 +38,33 @@ function Presentation() {
 
     return (
         <div className="presentation">
-            <Seo title="Trender | A new place to share" />
+            <Seo />
             <header>
                 <CreateLink noHover href="/" >
                     <img src={`${cdnbaseurl}/assets/logos/white.png`} alt="app-logo" />
                 </CreateLink>
                 <NavbarDiv>
                     <ChangeLanguages size={32} />
-                    <div className="connect">
-                        {  user ? <CreateLink noHover text={t("home")} href="/home" /> : <CreateLink noHover text={t("connect")} href="/login" /> }
-                    </div>
+                    {  plateform && (
+                        <div className="connect">
+                            <CreateLink noHover text={t("download")} href={plateform} /> 
+                        </div>
+                        ) 
+                    }
                 </NavbarDiv>
             </header>
+            <AnimatedTwoDivBox 
+                title_1={"Trender, Create the Next Trend and Become a Recognized Creator"} 
+                text_1={"Trender is a free social network designed to help creators become recognized. You can easily create the next big trend and join a community of like-minded creators."} 
+                text_2={
+                    <>
+                        <AnimatedIconBox link={"https://play.google.com/store/apps/details?id=com.trenderapp.social"} text="Android" icon={"play-store"} />
+                        <AnimatedIconBox link={"https://apps.apple.com/app/trender-social-network/id6443865410"} text="IOS" icon={"apple-icon"} />
+                    </>
+               }
+                />
             {
-                /*<AnimatedBoxImage title={t("protect_your_data_title")} text={t("protect_your_data_description")} image={{
-                src: `${cdnbaseurl}/assets/backgrounds/placeholder_eric.png`,
-                alt: "juste un truc qui doit etre la"
-            }} />
+                /*
             <AnimatedBoxImage reverse title={t("create_your_own_trender_title")} text={t("create_your_own_trender_description")} image={{
                 src: `${cdnbaseurl}/assets/backgrounds/placeholder_eric.png`,
                 alt: "juste un truc qui doit etre la"
@@ -68,16 +78,7 @@ function Presentation() {
                 alt: "juste un truc qui doit etre la"
             }} />*/
             }
-            <AnimatedTextTitleBox noButton title={"Website under maintenance find us on your mobile phone" /**t("ready_to_start") */} /> 
-            <div style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "row"
-            }}>
-                <AnimatedIconBox link={"https://play.google.com/store/apps/details?id=com.trenderapp.social"} text="Android" icon={"play-store"} />
-                <AnimatedIconBox link={"https://apps.apple.com/app/trender-social-network/id6443865410"} text="IOS" icon={"apple-icon"} />
-            </div>
+
             <footer>
                 <div className="left">
                     <h3>Application</h3> 

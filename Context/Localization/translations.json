@@ -12,6 +12,7 @@
   "notifications": "Notifications",
   "waiting": "Waiting",
   "accepted": "Accepted",
+  "download": "Download",
 
   "200": "success",
   "404": "This root doesn't exit",

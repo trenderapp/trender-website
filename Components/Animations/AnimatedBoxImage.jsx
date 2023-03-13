@@ -30,6 +30,7 @@ const fadeInUp = {
         once: true
     }
 };
+
 function AnimatedBoxImage({ reverse, title, image = {src, alt}, text }) {
 
     return (
