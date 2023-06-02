@@ -1,0 +1,15 @@
+{
+  "applinks": {
+      "details": [
+           {
+             "appIDs": [ "VU55U8U5HR.com.trenderapp.com" ],
+             "components": [
+               {
+                  "/": "*",
+                  "comment": "Matches any URL"
+               }
+             ]
+           }
+       ]
+   }
+}
