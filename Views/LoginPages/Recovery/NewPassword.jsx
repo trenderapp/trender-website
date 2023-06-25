@@ -40,13 +40,12 @@ function NewPasswordHome({ code }) {
 
         setWaiting(true);
 
-        const request = await fetch(`${apibaseurl}/users/me/recovery/verify`, {
+        const request = await fetch(`${apibaseurl}/users/me/recovery/password?code=${code}`, {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json" 
             },
             body: JSON.stringify({
-                code: code,
                 password: users.password,
                 password2: users.password2
             }),
