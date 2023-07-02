@@ -34,7 +34,6 @@ function NewPasswordHome({ code }) {
         e.preventDefault();
 
         if(waiting) return setResponse({ is_error: true, content: t(`sending_form`) });
-
         if(users.password !== users.password2) return setResponse({ is_error: true, content: t(`different_password`) });
         if(users.password.length < 8) return setResponse({ is_error: true, content: t(`password_security`) });
 

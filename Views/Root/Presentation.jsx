@@ -15,7 +15,6 @@ import { useEffect } from "react";
 
 function Presentation() {
 
-    const { user } = useClient();
     const { t } = useTranslation("presentation");
     const [plateform, setPlateform] = useState(null);
 
@@ -92,9 +91,10 @@ function Presentation() {
                     <span>© {dayjs().year()} Trender</span>
                 </div>
                 <div className="right">
-                    <h3>Légal</h3>
-                    <CreateLink text="CGU" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
-                    <CreateLink text="Mentions Légal" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
+                    <h3>Legals</h3>
+                    <CreateLink text="Terms of Sales" href="https://cdn.trenderapp.com/assets/legal/TOS.pdf" />
+                    <CreateLink text="Terms of Services" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
+                    <CreateLink text="Legal Mentions" href="https://cdn.trenderapp.com/assets/legal/T&S.pdf" />
                 </div>
             </footer>
         </div>
