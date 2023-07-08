@@ -9,7 +9,6 @@ import { detect } from "detect-browser";
 import { useTranslation } from "../../Context/Localization";
 import { ChangeLanguages } from "../../Components/Menu";
 import { NavbarDiv } from "../../Components/Navbar";
-import { useClient } from "../../Context";
 import { useEffect } from "react";
 
 
